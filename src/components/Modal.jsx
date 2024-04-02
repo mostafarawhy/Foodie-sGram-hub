@@ -14,7 +14,7 @@ const Modal = () => {
   const { addNewInteraction } = useInteraction();
   const { selectedImg, setSelectedImg, selectedImageID, uploaderId } =
     useContext(GlobalContext);
-  const { setIsOpen } = useContext(GlobalContext);
+  const { setLogInModalOpen } = useContext(GlobalContext);
   const { currentUser } = useContext(GlobalUserContext);
   const currentProfileName = currentUser?.name;
   const currentProfileId = currentUser?.id || currentUser?.sub;
@@ -30,7 +30,7 @@ const Modal = () => {
   const handleComment = () => {
     const randomCommentId = generateRandomCommentId();
     if (!currentUser) {
-      setIsOpen(true);
+      setLogInModalOpen(true);
     } else {
       updateComment(
         selectedImageID,
@@ -39,7 +39,14 @@ const Modal = () => {
         input,
         currentProfileId
       );
-      addNewInteraction(uploaderId, currentUser, "comment", selectedImg, input);
+      addNewInteraction(
+        uploaderId,
+        currentUser,
+        "comment",
+        selectedImg,
+        input,
+        selectedImageID
+      );
       setInput("");
     }
   };

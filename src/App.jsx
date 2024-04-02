@@ -10,13 +10,17 @@ import HomePageLogin from "./components/HomePageLogin";
 
 function App() {
   const location = useLocation();
-  const { setSelectedImg } = useContext(GlobalContext);
+  const { setSelectedImg, setIsOpen, setSelectedImageID } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     const imageUrlQueryParams = location.search;
     const urlParams = new URLSearchParams(imageUrlQueryParams);
     const imageUrl = urlParams.get("imageUrl");
+    const imageId = urlParams.get("imageId");
 
+    setSelectedImageID(imageId);
+    setIsOpen(true);
     setSelectedImg(imageUrl); //opens the modal with the image (dependant on that rendering )
   }, [location]);
   // const [location, setLocation] = useState(null);
@@ -43,7 +47,7 @@ function App() {
   // }, []);
   // console.log(location);
   return (
-    <GoogleOAuthProvider clientId="your google client id here ">
+    <GoogleOAuthProvider clientId="1029317675053-a5090k3cu3d7bhvb9j6qlu2mktbe3c7e.apps.googleusercontent.com">
       <Routes>
         <Route path="/" element={<HomePageLogin />} />
         <Route

@@ -7,7 +7,7 @@ import { GlobalUserContext } from "./context/UsersContext.jsx";
 const CommentBox = () => {
   const { docs } = useFirestore("images"); // fetching
   const { deleteComment } = useUpdateFireStore();
-  const { selectedImageID } = useContext(GlobalContext);
+  const { selectedImageID, isOpen } = useContext(GlobalContext);
   const { currentUser } = useContext(GlobalUserContext);
   // eslint-disable-next-line no-unused-vars
   const [currentImageData, setCurrentImageData] = useState(null);

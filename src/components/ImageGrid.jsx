@@ -9,7 +9,6 @@ import { GlobalUserContext } from "./context/UsersContext";
 import useUpdateFireStore from "../hooks/useUpdateFireStore";
 import Modal from "./Modal";
 import useInteraction from "../hooks/useInteraction";
-import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const ImageGrid = () => {
@@ -23,6 +22,7 @@ const ImageGrid = () => {
     setLogInModalOpen,
     setSelectedImg,
     selectedImg,
+    isOpen,
     setSelectedImageID,
     setUploaderId,
   } = useContext(GlobalContext);
@@ -59,7 +59,7 @@ const ImageGrid = () => {
 
   return (
     <>
-      {selectedImg && <Modal />}
+      {selectedImg && isOpen && <Modal />}
       {toggle && <div className="bg-pink w-20 h-900"></div>}
 
       {isloading || !isImagesLoaded ? (

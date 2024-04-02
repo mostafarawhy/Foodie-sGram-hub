@@ -82,8 +82,8 @@ const NotificationDropDown = () => {
                     }`}
                   >
                     <Link
-                      className="flex flex-row items-center "
-                      to={`/home-profile?imageUrl=${notification.imageUrl}`}
+                      className="flex flex-row items-center"
+                      to={`/home-profile?imageUrl=${notification.imageUrl}&imageId=${notification.imageId}`}
                     >
                       <img
                         className="ml-1 rounded-full w-8 min-w-8"
